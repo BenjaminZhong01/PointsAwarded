@@ -18,7 +18,7 @@ public class Transaction {
     @Column(name = "transaction_amount")
     private double amount;
 
-    @Column(name = "customer")
+    @Column(name = "transaction_customer")
     private Long customer_id;
 
     public Date getDate() {

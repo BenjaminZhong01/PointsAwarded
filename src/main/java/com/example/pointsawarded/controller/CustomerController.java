@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value="/customers/{customerId}", method=RequestMethod.PUT)
-    public Customer readCustomers(@PathVariable(value="customerId") Long id, @RequestBody Customer customer) {
+    public Customer updateCustomers(@PathVariable(value="customerId") Long id, @RequestBody Customer customer) {
         return customerService.updateCustomer(id, customer);
     }
 

@@ -5,6 +5,9 @@ import com.example.pointsawarded.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,5 +39,49 @@ public class TransactionService {
         target.setCustomer_id(transaction.getCustomer_id());
 
         return transactionRepository.save(target);
+    }
+
+    //Get Total Rewards in three months
+    public double getTotalRewards(Long customerId) {
+        List<Transaction> allTransactions = getTransactions();
+        double total = 0;
+        for(Transaction transaction : allTransactions) {
+            if (transaction.getCustomer_id() == customerId) {
+                total += helper(transaction.getAmount());
+            }
+        }
+        return total;
+    }
+
+    //Get Total Rewards in a given month
+    public ArrayList getTotalMonthlyRewards(Long customerId) {
+        List<Transaction> allTransactions = getTransactions();
+        ArrayList total = new ArrayList(3);
+        for (int i = 1; i <= 3; i++) {
+            for(Transaction transaction : allTransactions) {
+            if (transaction.getCustomer_id() == customerId && inMonth(transaction.getDate(), i)) {
+                total.add(helper(transaction.getAmount()));
+            }
+        }}
+        return total;
+    }
+
+    //return the points awarded given the amount of purchase
+    public static int helper(double amount) {
+        int bar = 50;
+        int reward = 0;
+        while (bar < amount) {
+            reward += amount - bar;
+            bar += 50;
+        }
+        return reward;
+    }
+
+    //return true if transaction was occurred in month i
+    public static boolean inMonth(Date date, int month) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int cur= cal.get(Calendar.MONTH);
+        return cur == month;
     }
 }
