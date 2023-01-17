@@ -44,7 +44,7 @@ public class TransactionService {
     //Get Total Rewards in three months
     public double getTotalRewards(Long customerId) {
         List<Transaction> allTransactions = getTransactions();
-        double total = 0;
+        int total = 0;
         for(Transaction transaction : allTransactions) {
             if (transaction.getCustomer_id() == customerId) {
                 total += helper(transaction.getAmount());
@@ -58,11 +58,15 @@ public class TransactionService {
         List<Transaction> allTransactions = getTransactions();
         ArrayList total = new ArrayList(3);
         for (int i = 1; i <= 3; i++) {
+            int cur = 0;
             for(Transaction transaction : allTransactions) {
             if (transaction.getCustomer_id() == customerId && inMonth(transaction.getDate(), i)) {
-                total.add(helper(transaction.getAmount()));
+                cur += helper(transaction.getAmount());
             }
-        }}
+
+        }
+            total.add(cur);
+        }
         return total;
     }
 
@@ -81,7 +85,7 @@ public class TransactionService {
     public static boolean inMonth(Date date, int month) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        int cur= cal.get(Calendar.MONTH);
+        int cur= cal.get(Calendar.MONTH) + 1;
         return cur == month;
     }
 }
