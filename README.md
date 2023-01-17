@@ -1,4 +1,4 @@
-REST API FOR POINTS REWARDED
+## REST API FOR POINTS REWARDED
 1. Description: this project use Spring Boot Framework to develop a restful api to calculate points rewarded of each customer in total and monthly.
 2. The project is run with Spring Boot Framework v3.0.1 and Java 17.
 3. The test dataset is in transaction-schema which has two tables: customer and transaction. There are some test records for each table, including transactions in three month from Jan 2022 to Mar 2022.
