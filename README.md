@@ -41,10 +41,12 @@
 * Show customer total points rewarded: http://localhost:8080/api/transactions/rewards/total/{customerID}
 * Show customer monthly points rewarded: http://localhost:8080/api/transactions/rewards/monthly/{customerID}
 
-6. Test requests:to get customer 2 total points, visit http://localhost:8080/api/transactions/rewards/total/2 and server responses 1420.0. To get customer 2 monthly points, visit http://localhost:8080/api/transactions/rewards/monthly/2 and server responses [680,10,730]. They are the monthly points rewarded from Jan to Mar in 2022. 
+6. Test requests:to get customer 2 total points, visit http://localhost:8080/api/transactions/rewards/total/2 and server responses 1420.0. To get customer 2 monthly points, visit http://localhost:8080/api/transactions/rewards/monthly/2 and server responses [680,10,730]. They are the monthly points rewarded from Jan to Mar in 2022.
+7. Unit Test: for simplification, test two key functions (total points reward & monthly points rewarded) for user with id=2. The unit tests passed and the screenshots are shown below.
 
 ### screenshots of datasets and API tests
 ![img.png](img.png)
 ![img_1.png](img_1.png)
 ![img_3.png](img_3.png)
 ![img_2.png](img_2.png)
+![img_4.png](img_4.png)

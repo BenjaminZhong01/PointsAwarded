@@ -13,6 +13,11 @@ public class Customer {
     @Column(name = "customer_name")
     private String name;
 
+    public Customer(){}
+    Customer(String name) {
+        this.name = name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

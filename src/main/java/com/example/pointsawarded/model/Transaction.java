@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "transaction")
+@Table(name="transaction")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,13 @@ public class Transaction {
 
     @Column(name = "transaction_customer")
     private Long customer_id;
+
+    public Transaction(){}
+    public Transaction(Date date, double amount, Long customer_id) {
+        this.date = date;
+        this.amount = amount;
+        this.customer_id = customer_id;
+    }
 
     public Date getDate() {
         return date;
